@@ -52,13 +52,17 @@ button {
     border-radius: 10px;
 }
 
+button:hover {
+    background-color: rgb(190, 170, 209);
+    cursor: pointer;
+}
+
 #question button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     margin: 5px;
     align-items: center;
-    display: flex;
 }
 
 .initials-form {
