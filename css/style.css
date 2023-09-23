@@ -79,6 +79,16 @@ button:hover {
     display: none;
 }
 
+#correct,
+#wrong {
+    display: none;
+    border-top: solid rgb(175, 175, 175);
+    color: rgb(175, 175, 175);
+    font-size: 30px;
+    margin-top: 20px;
+    font-style: italic;
+}
+
 #all-done {
     display: none;
 }

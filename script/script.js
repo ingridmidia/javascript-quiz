@@ -7,6 +7,8 @@ var answer1Button = document.getElementById("answer1");
 var answer2Button = document.getElementById("answer2");
 var answer3Button = document.getElementById("answer3");
 var answer4Button = document.getElementById("answer4");
+var correct = document.getElementById("correct");
+var wrong = document.getElementById("wrong");
 
 startButton.addEventListener("click", function (e) {
     setTimer();
@@ -63,10 +65,10 @@ answer4Button.addEventListener("click", validateAnswer);
 
 function validateAnswer(e) {
     if (e.srcElement.innerText === rightAnswers[currentQuestion]) {
-        // display Correct!
+        correct.style.display = "block";
     } else {
         timeLeft = timeLeft - 15;
-        // display Wrong!
+        wrong.style.display = "block";
     }
     currentQuestion++;
     showQuestion();
