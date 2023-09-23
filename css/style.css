@@ -1,0 +1,35 @@
+body{
+    line-height: 1.4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#highscores {
+align-items: flex-start;
+}
+
+#timer {
+    align-items: flex-end;
+}
+
+main {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+
+#start-button {
+background-color: rgb(167, 92, 238);
+color: white;
+font-weight: bold;
+font-size: 20px;
+border: none;
+padding: 10px;
+border-radius: 10px;
+}
