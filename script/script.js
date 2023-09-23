@@ -1,8 +1,12 @@
 var startButton = document.getElementById("start-button");
 var timer = document.getElementById("timer");
+var question = document.getElementById("question");
+var initialPage = document.getElementById("initial-page");
 
 startButton.addEventListener("click", function (e) {
     setTimer();
+    initialPage.style.display = "none";
+    question.style.display = "block";
     // showQuestion();
 });
 

@@ -1,5 +1,16 @@
-body{
+body {
     line-height: 1.4;
+    padding: 100px;
+    font-size: 25px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: normal;
 }
 
 header {
@@ -7,10 +18,11 @@ header {
     justify-content: space-between;
     font-size: 25px;
     padding: 10px;
+    margin-bottom: 80px;
 }
 
 #highscores {
-align-items: flex-start;
+    align-items: flex-start;
 }
 
 #timer {
@@ -18,18 +30,51 @@ align-items: flex-start;
 }
 
 main {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-#start-button {
-background-color: rgb(167, 92, 238);
-color: white;
-font-weight: bold;
-font-size: 20px;
-border: none;
-padding: 10px;
-border-radius: 10px;
+main h2 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+button {
+    background-color: rgb(153, 115, 189);
+    color: white;
+    font-size: 25px;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+#question button {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.initials-form {
+    display: flex;
+    align-items: center;
+}
+
+#initials {
+    height: 26px;
+    margin: 0 5px;
+}
+
+#question {
+    display: none;
+}
+
+#all-done {
+    display: none;
 }
