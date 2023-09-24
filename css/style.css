@@ -98,7 +98,7 @@ button:hover {
     align-items: flex-start;
 }
 
-#initials-list {
+#highscores-list {
     list-style: auto;
     padding-left: 25px;
     background-color: rgb(217, 208, 225);
