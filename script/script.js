@@ -10,6 +10,7 @@ var answer4Button = document.getElementById("answer4");
 var correct = document.getElementById("correct");
 var wrong = document.getElementById("wrong");
 var allDone = document.getElementById("all-done");
+var finalScoreMessage = document.getElementById("final-score-message");
 
 startButton.addEventListener("click", function (e) {
     setTimer();
@@ -19,14 +20,16 @@ startButton.addEventListener("click", function (e) {
 });
 
 var timeLeft = 75;
+var timerInterval;
 
 function setTimer() {
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timeLeft--;
         timer.textContent = "Time: " + timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             timer.textContent = "Time: 0";
+            timeLeft = 0;
             showAllDone();
         }
     }, 1000);
@@ -60,7 +63,7 @@ var currentQuestion = 0;
 function showQuestion() {
     if (currentQuestion > allQuestions.length - 1) {
         showAllDone();
-       // timer needs to stop and use timeLeft as final score
+        clearInterval(timerInterval);
     } else {
         questionTitle.textContent = allQuestions[currentQuestion].questionTitle;
         answer1Button.textContent = allQuestions[currentQuestion].answers[0];
@@ -88,6 +91,11 @@ function validateAnswer(e) {
         setTimeout(hideCorrectOrWrong, 5000);
     } else {
         timeLeft = timeLeft - 15;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timer.textContent = "Time: 0";
+            timeLeft = 0;
+        }
         wrong.style.display = "block";
         setTimeout(hideCorrectOrWrong, 5000);
     }
@@ -99,6 +107,7 @@ function showAllDone() {
     question.style.display = "none";
     hideCorrectOrWrong();
     allDone.style.display = "block";
+    finalScoreMessage.textContent = "Your final score is " + timeLeft + ".";
 }
 
 function hideCorrectOrWrong() {
