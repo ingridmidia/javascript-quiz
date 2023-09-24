@@ -12,6 +12,7 @@ var wrong = document.getElementById("wrong");
 var allDone = document.getElementById("all-done");
 var finalScoreMessage = document.getElementById("final-score-message");
 var submitButton = document.getElementById("submit-button");
+var initials = document.getElementById("initials");
 
 startButton.addEventListener("click", function (e) {
     setTimer();
@@ -117,5 +118,15 @@ function hideCorrectOrWrong() {
 }
 
 submitButton.addEventListener("click", function () {
+    var initialsList = [];
+    initialsList.push(initials.value);
+    initialsList = initialsList.concat(localStorage.getItem("initialsList"));
+    localStorage.setItem("initialsList", initialsList);
+    
+    var scoreList = [];
+    scoreList.push(timeLeft);
+    scoreList = scoreList.concat(localStorage.getItem("scoreList"));
+    localStorage.setItem("scoreList", scoreList);
+
     window.location.href = "./highscores.html";
 });
