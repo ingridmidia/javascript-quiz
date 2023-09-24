@@ -11,6 +11,7 @@ var correct = document.getElementById("correct");
 var wrong = document.getElementById("wrong");
 var allDone = document.getElementById("all-done");
 var finalScoreMessage = document.getElementById("final-score-message");
+var submitButton = document.getElementById("submit-button");
 
 startButton.addEventListener("click", function (e) {
     setTimer();
@@ -115,3 +116,6 @@ function hideCorrectOrWrong() {
     wrong.style.display = "none";
 }
 
+submitButton.addEventListener("click", function () {
+    window.location.href = "./highscores.html";
+});

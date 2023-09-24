@@ -23,6 +23,7 @@ header {
 
 #highscores {
     align-items: flex-start;
+    text-decoration: none;
 }
 
 #timer {
@@ -91,4 +92,16 @@ button:hover {
 
 #all-done {
     display: none;
+}
+
+#highscores-page {
+    align-items: flex-start;
+}
+
+#initials-list {
+    list-style: auto;
+    padding-left: 25px;
+    background-color: rgb(217, 208, 225);
+    width: 85%;
+    margin: 20px 0 20px;
 }
