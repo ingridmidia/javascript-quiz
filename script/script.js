@@ -14,6 +14,7 @@ var finalScoreMessage = document.getElementById("final-score-message");
 var submitButton = document.getElementById("submit-button");
 var initials = document.getElementById("initials");
 
+// When user clicks on start button the timer starts and the first question is shown
 startButton.addEventListener("click", function (e) {
     setTimer();
     initialPage.style.display = "none";
@@ -21,19 +22,21 @@ startButton.addEventListener("click", function (e) {
     showQuestion();
 });
 
+// Timer starts in 75 seconds, 15 seconds to each question
 var timeLeft = 75;
 var timerInterval;
 
+// Decrease timer every second
 function setTimer() {
     timerInterval = setInterval(function () {
-        timeLeft--;
-        timer.textContent = "Time: " + timeLeft;
+        timeLeft--; 
+        // If timer runs out game ends
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            timer.textContent = "Time: 0";
-            timeLeft = 0;
+            timeLeft = 0; // set timeLeft to 0, so user don't see a negative number
             showAllDone();
         }
+        timer.textContent = "Time: " + timeLeft;
     }, 1000);
 }
 
@@ -60,12 +63,14 @@ var allQuestions = [
     }
 ];
 
-var currentQuestion = 0;
+var rightAnswers = ["3. object", "1. pop", "4. [ ]", "1. Reusable blocks of code", "4. To make decisions in code based on a condition"];
+
+var currentQuestion = 0;// used as index to access allQuestions and rightAnswers array
 
 function showQuestion() {
     if (currentQuestion > allQuestions.length - 1) {
-        showAllDone();
-        clearInterval(timerInterval);
+        showAllDone();// if all questions were shown goes to all done
+        clearInterval(timerInterval);// stops timer
     } else {
         questionTitle.textContent = allQuestions[currentQuestion].questionTitle;
         answer1Button.textContent = allQuestions[currentQuestion].answers[0];
@@ -75,48 +80,48 @@ function showQuestion() {
     }
 }
 
-var rightAnswers = ["3. object", "1. pop", "4. [ ]", "1. Reusable blocks of code", "4. To make decisions in code based on a condition"];
-
 answer1Button.addEventListener("click", validateAnswer);
 answer2Button.addEventListener("click", validateAnswer);
 answer3Button.addEventListener("click", validateAnswer);
 answer4Button.addEventListener("click", validateAnswer);
 
+// The innerText of the button the user clicked is compared to the rightAnswers array on the currentQuestion index to validate if answer is correct
+function validateAnswer(e) {
+    if (e.srcElement.innerText === rightAnswers[currentQuestion]) {
+        correct.style.display = "block";// display Correct! message
+        setTimeout(hideCorrectOrWrong, 5000);// hides message after 5 seconds
+    } else {
+        timeLeft = timeLeft - 15;// if user picks wrong answer their time decreases by 15 seconds
+        // set timeLeft to 0, so user don't see a negative number
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timeLeft = 0;
+        }
+        timer.textContent = "Time: " + timeLeft;
+        wrong.style.display = "block";// display Wrong! message
+        setTimeout(hideCorrectOrWrong, 5000);// hides message after 5 seconds
+    }
+    currentQuestion++;
+    showQuestion();
+}
+// if user pick an answer before 5 seconds Corret! and Wrong! messages will be hidden
 answer1Button.addEventListener("mousedown", hideCorrectOrWrong);
 answer2Button.addEventListener("mousedown", hideCorrectOrWrong);
 answer3Button.addEventListener("mousedown", hideCorrectOrWrong);
 answer4Button.addEventListener("mousedown", hideCorrectOrWrong);
 
-function validateAnswer(e) {
-    if (e.srcElement.innerText === rightAnswers[currentQuestion]) {
-        correct.style.display = "block";
-        setTimeout(hideCorrectOrWrong, 5000);
-    } else {
-        timeLeft = timeLeft - 15;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            timer.textContent = "Time: 0";
-            timeLeft = 0;
-        }
-        wrong.style.display = "block";
-        setTimeout(hideCorrectOrWrong, 5000);
-    }
-    currentQuestion++;
-    showQuestion();
-}
-
 function showAllDone() {
     question.style.display = "none";
-    hideCorrectOrWrong();
+    hideCorrectOrWrong();// hide Correct! or Wrong! when all questions are answered
     allDone.style.display = "block";
-    finalScoreMessage.textContent = "Your final score is " + timeLeft + ".";
+    finalScoreMessage.textContent = "Your final score is " + timeLeft + ".";// timeLeft is used as user's final score
 }
 
 function hideCorrectOrWrong() {
     correct.style.display = "none";
     wrong.style.display = "none";
 }
-
+// creates initials and scores arrays and redirects to highscores page
 submitButton.addEventListener("click", function () {
     var initialsList = [];
     initialsList.push(initials.value);
