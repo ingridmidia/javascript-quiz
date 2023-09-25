@@ -124,7 +124,7 @@ function hideCorrectOrWrong() {
 // creates initials and scores arrays and redirects to highscores page
 submitButton.addEventListener("click", function () {
     var initialsList = [];
-    initialsList.push(initials.value);
+    initialsList.push(initials.value.toUpperCase());
     initialsList = initialsList.concat(localStorage.getItem("initialsList"));
     localStorage.setItem("initialsList", initialsList);
     
