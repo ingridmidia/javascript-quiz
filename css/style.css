@@ -99,8 +99,8 @@ button:hover {
 }
 
 #highscores-list {
-    list-style: auto;
-    padding-left: 25px;
+    list-style: decimal-leading-zero;
+    padding-left: 45px;
     background-color: rgb(217, 208, 225);
     width: 85%;
     margin: 20px 0 20px;
